@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Do You Love Me?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Playfair+Display&display=swap');
+
+  /* Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    color: #4a2c2a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  header {
+    padding: 1rem 2rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #8b2e2e;
+    letter-spacing: 3px;
+    user-select: none;
+  }
+
+  header h1::after {
+    content: " ♥";
+    color: #d9435e;
+    font-size: 2.5rem;
+    margin-left: 0.2rem;
+    animation: pulse 2s infinite;
+    display: inline-block;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+
+  .question-box {
+    background-color: rgba(255,255,255,0.9);
+    padding: 3rem 4rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(239, 117, 133, 0.4);
+    max-width: 500px;
+    width: 90%;
+  }
+
+  .question-box h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #b84a5d;
+    margin-bottom: 2rem;
+  }
+
+  .answer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  button {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    padding: 0.8rem 3rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(233, 107, 127, 0.5);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+
+  .btn-yes {
+    background-color: #e96b7f;
+    color: white;
+  }
+
+  .btn-yes:hover, .btn-yes:focus {
+    background-color: #d9435e;
+    box-shadow: 0 8px 25px rgba(217, 67, 94, 0.8);
+    outline: none;
+  }
+
+  .btn-no {
+    background-color: #f7c6c6;
+    color: #7a3b3b;
+  }
+
+  .btn-no:hover, .btn-no:focus {
+    background-color: #e49ea0;
+    box-shadow: 0 8px 25px rgba(180, 114, 115, 0.8);
+    outline: none;
+  }
+
+  .response-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #6e3b3b;
+    min-height: 3rem;
+    margin-top: 1rem;
+    user-select: none;
+    transition: opacity 0.5s ease;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    color: #5c3b3b;
+    user-select: none;
+  }
+
+  @media (max-width: 600px){
+    .question-box h2 {
+      font-size: 2.2rem;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 0.6rem 2rem;
+    }
+    .answer-buttons {
+      gap: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Romantic Moments</h1>
+</header>
+<main>
+  <div class="question-box" role="main" aria-labelledby="love-question">
+    <h2 id="love-question">Do you love me?</h2>
+    <div class="answer-buttons">
+      <button class="btn-yes" id="yes-btn" aria-label="Yes, I love you">Yes ❤️</button>
+      <button class="btn-no" id="no-btn" aria-label="No, I don't love you">No 💔</button>
+    </div>
+    <div class="response-message" id="response-message" aria-live="polite"></div>
+  </div>
+</main>
+<footer>
+  &copy; 2024 Romantic Moments. All hearts united.
+</footer>
+
+<script>
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const responseMessage = document.getElementById('response-message');
+
+  yesBtn.addEventListener('click', () => {
+    responseMessage.style.opacity = 0;
+    setTimeout(() => {
+      responseMessage.textContent = "You just made my heart melt! ❤️ I'm yours forever.";
+      responseMessage.style.opacity = 1;
+    }, 300);
+  });
+
+  noBtn.addEventListener('click', () => {
+    responseMessage.style.opacity = 0;
+    setTimeout(() => {
+      responseMessage.textContent = "Oh no! But I believe love finds its way. 💕 Let's stay friends.";
+      responseMessage.style.opacity = 1;
+    }, 300);
+  });
+</script>
+</body>
+</html>
